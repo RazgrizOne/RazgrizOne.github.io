@@ -1,0 +1,78 @@
+FILES:
+
+color.js - While trying to create color gradients I ran into the issue that
+javascript only accepts hex color values. I imported this file to allow us to
+use HSV colors which are MUCH more useful and more importantly number driven.
+
+leaflet.js - Leaflet is what enables us to us the geojson data to generate a map.
+it then gives us all sorts of mapping tools.
+
+index.html - Just the name of our html file for now.
+
+myStyle.css - Where we will write all our css style. Simple
+
+worldmap.js : the geojson file that contains all world geometry and data
+I made this file by going into QGIS, importing a shape file from http://www.naturalearthdata.com/
+as a new vector layer. Then I exported that layer as a geojson file. THEN I added var myData = [ ];
+and turned the file to a .js file so I could access the variables contained within it. I will reiterate-
+litterally everything on that map is contained in here.
+
+
+Attribution:
+
+Try to keep track of any tool we use here so we can easily give people credit when we are done.
+
+Color.js - https://github.com/Automattic/Color.js
+mapData - http://www.naturalearthdata.com/
+leaflet.js - http://leafletjs.com/
+
+
+Questions:
+
+what exactly is getting passed by the event handler. That is e.
+how do I access data without using targets. You know, just in case we want to.
+
+
+[main.js overview]
+Methods:      [soooo all of these are terribly named and need to be renamed. I have Ideas, but I will do it later.]
+
+highlightFeature(e)
+this function is used by dataOnEachFeature (better name pending) to highlight features that are
+moused over. You could call it any time you need a feature highlighted.
+[currently called on mouse hover by the event handler]
+
+calcStyle(feature)
+pass a feature into this and it will set the style based on what I currently have named the Travel variable
+that is contained in feature.properties.Travel
+[features are inside worldmap.js as myData]
+
+resetHighlight(e)
+'resets' the color of the feature by recalculating it with countriesStyle()
+[is currently only called by the event handler on mouse leave]
+
+zoomToFeature(e)
+sets the bounds of the map to fit the target.
+[currently called by the event handler on clicking a target]
+
+actionMethodList(feature, layer)
+kind of the event handler. More accurately it identifies
+what methods should be called when certain actions occur.
+if you want something to happen when you do something, put it here.
+
+getCountryColor(number)
+this will be one of likely a few functions which will take in a number and give out a color.
+This will be where we math out how colors should be determined for each country given the input data.
+
+buildLegend()
+builds a legend with magic
+
+Window.onload()
+
+In here there are only a few things going on.
+we declare the variable that will hold the map element.
+we create a very meh legend which should likely be made in a function.
+then we add that element to the map layer.
+then we add the data to the map as a layer.
+
+
+

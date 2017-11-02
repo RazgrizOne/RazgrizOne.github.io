@@ -1,0 +1,13 @@
+#mapDivId {
+    position: fixed;
+    width: 100%;
+    height: 400px;
+    background: #395A86
+}
+
+.legend{
+    background: white; line-height:1.5em;
+}
+.legend i {
+    width: 5em; float: left;
+}
