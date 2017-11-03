@@ -4,6 +4,11 @@
 var dataLayer;
 var map;
 var maxvalue = 320000;
+var currentdate = 1;
+
+function ChangeData(type,date){
+    
+}
 
 function TOURISTS(feature){
     return feature.properties["T_2016_01"]
@@ -123,7 +128,7 @@ window.onload = function () {
         }
     )
 
-
+    document.getElementById("clickMe").onclick = doFunction;
 
     buildLegend();
 
