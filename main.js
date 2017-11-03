@@ -6,7 +6,7 @@ var map;
 var maxvalue = 320000;
 
 function TOURISTS(feature){
-    return feature.properties.Travel
+    return feature.properties["T_2016_01"]
 }
 
 //how style is determined when mousing over a feature
@@ -116,7 +116,7 @@ window.onload = function () {
     //this is the map data
     //just call data.feature. etc... to dig into it.
     var data = L.geoJSON(
-        testvar,
+        json_data,
         {
             style: calcStyle,
             onEachFeature: actionMethodList
