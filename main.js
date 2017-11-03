@@ -12,9 +12,9 @@ function changeData(type, change){
     console.log("changeData was called")
     currentdate += change
     datastring = "T_2016_" + currentdate.toString();
-    foreach(layer in data){
-
-    }
+    data.eachLayer(function (layer) { 
+        layer.setStyle(calcStyle(layer.feature)) 
+        });
 }
 
 function getData(feature){
