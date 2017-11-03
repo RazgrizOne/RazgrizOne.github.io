@@ -5,13 +5,21 @@ var dataLayer;
 var map;
 var maxvalue = 320000;
 var currentdate = 1;
+var datastring = "T_2016_1"
+var data
 
-function ChangeData(type,date){
-    
+function changeData(type, change){
+    console.log("changeData was called")
+    currentdate += change
+    datastring = "T_2016_" + currentdate.toString();
+    foreach(layer in data){
+
+    }
 }
 
-function TOURISTS(feature){
-    return feature.properties["T_2016_01"]
+function getData(feature){
+    return feature.properties[datastring];
+    //return feature.properties["T_2016_1"]
 }
 
 //how style is determined when mousing over a feature
@@ -34,13 +42,13 @@ function highlightFeature(e) {
 function calcStyle(feature) {
     var featureweight = 0;
     var featurecolor = "white";
-    if (TOURISTS(feature) > 0) {
+    if (getData(feature) > 0) {
         featurecolor = "black";
         featureweight = 1;
     }
 
     return {
-        fillColor: getCountryColor(TOURISTS(feature)),
+        fillColor: getCountryColor(getData(feature)),
         weight: featureweight,
         opacity: 1,
         color: featurecolor,
@@ -120,7 +128,7 @@ window.onload = function () {
 
     //this is the map data
     //just call data.feature. etc... to dig into it.
-    var data = L.geoJSON(
+    data = L.geoJSON(
         json_data,
         {
             style: calcStyle,
@@ -128,7 +136,7 @@ window.onload = function () {
         }
     )
 
-    document.getElementById("clickMe").onclick = doFunction;
+    //document.getElementById("clickMe").onclick = changeData('T_2016_', 1);
 
     buildLegend();
 
@@ -136,7 +144,6 @@ window.onload = function () {
     //gets inserted into the map as a layer.
     //all of the tables and vectors are in tact and can be accessed.
     map.addLayer(data);
-
 
 /*
     var Geodesic = L.geodesic([], {
