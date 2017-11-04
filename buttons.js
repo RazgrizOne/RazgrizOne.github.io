@@ -11,6 +11,7 @@ function changeDate(date){
         layer.setStyle(calcStyle(layer.feature)) 
         });
 
+    document.querySelector('.content').innerHTML = currentdate;
     buildGraph();
 }
 
