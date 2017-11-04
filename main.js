@@ -3,19 +3,28 @@
 //these must be declared here so they can be used by the functions
 var dataLayer;
 var map;
-var maxvalue = 320000;
-var currentdate = 1;
-var datastring = "T_2016_1"
-var data
+var data;
 
-function changeData(type, change){
-    console.log("changeData was called")
-    currentdate += change
-    datastring = "T_2016_" + currentdate.toString();
-    data.eachLayer(function (layer) { 
-        layer.setStyle(calcStyle(layer.feature)) 
-        });
-}
+//the max value of the data
+//for use in certain styling methods
+var maxvalue = 320000;
+
+//the current number of the data in use
+var currentdate = 1;
+
+//Base names of data types without dates.
+var TOP20 = "T_2016_";
+var TOPPORTS = "PORTS_2016_";
+var MEXCAN = "MEX_CAN_2016_";
+
+//current target data frame. set by changeBaseData()
+var basedata = "T_2016_";
+
+//this contains the target data for methods
+var datastring = "T_2016_1";
+
+
+
 
 function getData(feature){
     return feature.properties[datastring];
@@ -23,20 +32,7 @@ function getData(feature){
 }
 
 //how style is determined when mousing over a feature
-function highlightFeature(e) {
-    var layer = e.target;
-    layer.setStyle(
-        {
-            weight: 1,
-            color: 'black',
-            fillColor: 'white',
-            fillOpacity: 0.2
-        }
-    );
-    if (!L.Browser.ie && !L.Browser.opera) {
-        layer.bringToFront();
-    }
-}
+
 
 //how the style is determined by the data within the dataLayer
 function calcStyle(feature) {
@@ -57,19 +53,7 @@ function calcStyle(feature) {
     }
 }
 
-//how the system handles resetting the highlight
-function resetHighlight(e) {
-    var layer = e.target;
-    layer.setStyle(calcStyle(e.target.feature)
-    );
-}
-
-//how zooming when clicked is handled
-function zoomToFeature(e) {
-    map.fitBounds(e.target.getBounds());
-}
-
-//assigns methods to different actions
+//assigns methods to different actions from actions.js
 function actionMethodList(feature, layer) {
     layer.on(
         {
@@ -135,8 +119,6 @@ window.onload = function () {
             onEachFeature: actionMethodList
         }
     )
-
-    //document.getElementById("clickMe").onclick = changeData('T_2016_', 1);
 
     buildLegend();
 
