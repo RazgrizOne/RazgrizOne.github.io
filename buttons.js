@@ -10,6 +10,8 @@ function changeDate(date){
     data.eachLayer(function (layer) { 
         layer.setStyle(calcStyle(layer.feature)) 
         });
+
+    buildGraph();
 }
 
 
