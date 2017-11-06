@@ -107,7 +107,7 @@ function getCountryColor(number) {
 window.onload = function () {
 
     //creating the variable that IS the map
-    map = L.map('mapDivId', {
+    map = L.map('mapDiv', {
         center: [51.505, -0.09],
         zoom: 1
     });
@@ -122,7 +122,7 @@ window.onload = function () {
         }
     )
 
-    buildLegend();
+    //buildLegend();
 
     console.log(getData(json_data.features[0]))
     //this is where the data from the shape file turned geojson file
