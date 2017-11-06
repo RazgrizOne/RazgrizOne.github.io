@@ -3,6 +3,7 @@
 //change - INT: how many places to move in the data + or -
 //
 //changeData changes the current data target
+var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 function changeDate(date){
     console.log("changeData was called")
     currentdate += date
@@ -11,7 +12,7 @@ function changeDate(date){
         layer.setStyle(calcStyle(layer.feature)) 
         });
 
-    document.querySelector('.content').innerHTML = currentdate;
+    document.querySelector('.content').innerHTML = months[currentdate-1];
     buildGraph();
 }
 

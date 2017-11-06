@@ -38,11 +38,11 @@ function getData(feature){
 
 //how the style is determined by the data within the dataLayer
 function calcStyle(feature) {
-    var featureweight = 0;
-    var featurecolor = "white";
+    var featureweight = .25;
+    var featurecolor = "black";
     if (getData(feature) > 0) {
         featurecolor = "black";
-        featureweight = 1;
+        featureweight = 1.5;
     }
 
     return {
@@ -93,7 +93,13 @@ function buildLegend(){
 //that or we will find something else that already exists that will do its job.
 function getCountryColor(number) {
     var tempnumber = number;
-
+    if (number == 0){
+        return Color({
+            b:184,
+            g:184,
+            r:184
+        }).toCSS();
+    }
     return Color({
         h: 360,
         s: number / maxvalue * 100,
