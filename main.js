@@ -124,7 +124,7 @@ window.onload = function () {
 
     //buildLegend();
 
-    console.log(getData(json_data.features[0]))
+    //console.log(getData(json_data.features[0]))
     //this is where the data from the shape file turned geojson file
     //gets inserted into the map as a layer.
     //all of the tables and vectors are in tact and can be accessed.
