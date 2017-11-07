@@ -7,7 +7,7 @@ var data;
 
 //the max value of the data
 //for use in certain styling methods
-var maxvalue = 320000;
+var maxvalue = 510000;
 
 //the current number of the data in use
 var currentdate = 1;
@@ -101,9 +101,9 @@ function getCountryColor(number) {
         }).toCSS();
     }
     return Color({
-        h: 360,
-        s: number / maxvalue * 100,
-        v: 60 + (number/maxvalue*25)
+        h: 0,
+        s: (number / maxvalue) * 100,
+        l: 50
     }).toCSS();
 }
 
