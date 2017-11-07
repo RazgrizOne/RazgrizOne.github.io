@@ -95,9 +95,9 @@ function getCountryColor(number) {
     var tempnumber = number;
     if (number == 0){
         return Color({
-            b:184,
-            g:184,
-            r:184
+            b:61,
+            g:60,
+            r:60
         }).toCSS();
     }
     return Color({
