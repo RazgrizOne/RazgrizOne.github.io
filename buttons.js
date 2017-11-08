@@ -7,6 +7,8 @@ var months = ["January", "February", "March", "April", "May", "June", "July", "A
 function changeDate(date){
     console.log("changeData was called")
     currentdate += date
+    //checkEnableMinus(currentdate);
+    //checkEnablePlus(currentdate);
     datastring = basedata + currentdate.toString();
     data.eachLayer(function (layer) { 
         layer.setStyle(calcStyle(layer.feature)) 
@@ -16,6 +18,25 @@ function changeDate(date){
     buildGraph();
 }
 
+function checkEnableMinus(date){
+    var btn = document.getElementById("minus");
+    if (date < 1){
+        btn.dissabled = true;
+    }
+    else {
+        btn.dissabled = false;
+    }
+}
+
+function checkEnablePlus(date){
+    var btn = document.getElementById("plus");
+    if (date > 12){
+        btn.dissabled = true;
+    }
+    else{
+        btn.dissabled = false;
+    }
+}
 
 //type - String: the new base data type
 //
