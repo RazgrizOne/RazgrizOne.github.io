@@ -37,6 +37,22 @@
 -->
 
 <header>2016 Tourism</header>
+<div class="dropdown">
+    <button onclick="myFunction()" class="dropbtn">Data Set</button>
+      <div id="myDropdown" class="dropdown-content">
+        <a href="#home", onclick="changeDate(1)">Top 20 Inbound</a>
+        <a href="#about">Top Ports U.S</a>
+        <a href="#contact">Canada, Mexico, International</a>
+      </div>
+    </div>
+<div class="dropdown">
+    <button onclick="myFunction()" class="dropbtn">Data Set</button>
+      <div id="myDropdown" class="dropdown-content">
+        <a href="#home", onclick="changeDate(1)">Home</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        </div>
+    </div>
 <button id = "minus", onclick="changeDate(-1)">Previous Month</button>
 <button id = "plus", onclick="changeDate(1)">Next Month</button>
 <div class="content">January <span class='value'></span></div>
@@ -51,5 +67,28 @@
 
 
 <footer></footer>
+
+<script>
+    /* When the user clicks on the button, 
+    toggle between hiding and showing the dropdown content */
+    function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+    
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+      if (!event.target.matches('.dropbtn')) {
+    
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }
+    </script>
 
 </html>
