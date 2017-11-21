@@ -1,42 +1,49 @@
 "use strict";
 
-//these must be declared here so they can be used by the functions
+//Declared here so they are accessable.
 var dataLayer;
 var map;
 var data;
 
-//the max value of the data
-//for use in certain styling methods
+//Max value of data: used in styling. Maybe the method should find this instead of saving it.
 var maxvalue = 510000;
 
-//the current number of the data in use
+//Target Data: MONTH
 var currentdate = 1;
 
-//Base names of data types without dates.
+//Target Data: DATA names, mostly just for reference.
 var TOP20 = "T_2016_";
 var TOPPORTS = "PORTS_2016_";
 var MEXCAN = "MEX_CAN_2016_";
 
-//current target data frame. set by changeBaseData()
+//Target Data: DATA
 var basedata = "T_2016_";
 
-//this contains the target data for methods
+//Target Data: DATA + MONTH
 var datastring = "T_2016_1";
 
 
+//Input:  JSON feature  EX: json_data.features[i] or json_data.features["Country_name_here"]
+//Output: target feature name
+//Method: simply a way to save time.
+//Dependancy: None
 function getName(feature){
     return feature.properties["name"];
 }
 
+//Input:  JSON feature  EX: json_data.features[i] or json_data.features["Country_name_here"]
+//Output: target data value
+//Method: simply a way to save time.
+//Dependancy: Uses the global data target datastring
 function getData(feature){
     return feature.properties[datastring];
     //return feature.properties["T_2016_1"]
 }
 
-//how style is determined when mousing over a feature
-
-
-//how the style is determined by the data within the dataLayer
+//Input:  JSON feature  EX: json_data.features[i] or json_data.features["Country_name_here"]
+//Output: Style list
+//Method: sets the style of the drawn country based on the current target data.
+//Dependancy: getData(), getCountryColor()
 function calcStyle(feature) {
     var featureweight = .25;
     var featurecolor = "black";
@@ -55,7 +62,11 @@ function calcStyle(feature) {
     }
 }
 
-//assigns methods to different actions from actions.js
+
+//Input:  JSON feature, Leaflet Layer
+//Output: VOID
+//Method: assigns methods to different actions from actions.js
+//Dependancy: highlightFeature(), resetHighlight(), zoomToFeature(), setStyle(), calcStyle()
 function actionMethodList(feature, layer) {
     layer.on(
         {
@@ -66,31 +77,10 @@ function actionMethodList(feature, layer) {
     );
 }
 
-function buildLegend(){
-    var legend = L.control({ position: 'bottomright' });
-    legend.onAdd = function (mapObject) {
-        var div = L.DomUtil.create('div', 'legend');
-        var labels = [
-            "Incoming = 1600000",
-            "________ = 1066666",
-            "________ = 533333"
-        ];
-        var grades = [maxvalue, maxvalue/3*2, maxvalue/3];
-        div.innerHTML = '<div><b><Legend</b></div>';
-        for (var i = 0; i < grades.length; i++) {
-            div.innerHTML += '<i style="background:'
-                + getCountryColor(grades[i]) + '">&nbsp;&nbsp;</i>&nbsp;&nbsp;'
-                + labels[i] + '<br/>';
-        }
-        return div;
-    }
-    legend.addTo(map);
-}
-
-//used to find what color a country should be
-//this will likely eventually get its own js file
-//needs to be way more complex
-//that or we will find something else that already exists that will do its job.
+//Input:  value
+//Output: CSS color
+//Method: returns a color given a value.
+//Dependancy: No custom code
 function getCountryColor(number) {
     var tempnumber = number;
     if (number == 0){
@@ -109,17 +99,19 @@ function getCountryColor(number) {
 
 
 
-//this is where the code is actually run
+//Input:  None
+//Output: None
+//Method: This is the main method.
+//Dependancy: Plenty
 window.onload = function () {
 
-    //creating the variable that IS the map
+    //Load the map layer.
     map = L.map('mapDiv', {
         center: [51.505, -0.09],
         zoom: 1
     });
 
-    //this is the map data
-    //just call data.feature. etc... to dig into it.
+    //load data from JSON file
     data = L.geoJSON(
         json_data,
         {
@@ -128,29 +120,24 @@ window.onload = function () {
         }
     )
 
-    //buildLegend();
-
-    //console.log(getData(json_data.features[0]))
-    //this is where the data from the shape file turned geojson file
-    //gets inserted into the map as a layer.
-    //all of the tables and vectors are in tact and can be accessed.
+    //add JSON as its own layer in the map.
     map.addLayer(data);
 
+    //Load data for the graph and Create the graph.
     graphLoader()
     buildGraph()
-
-/*
+    
+    //Geodesic line test. Needs work.
+    //###############################
     var Geodesic = L.geodesic([], {
         weight: 7, 
         opacity: 0.5,
         color: 'blue',
         steps: 50
     }).addTo(map);
-
-
     var berlin = new L.LatLng(52.5, 13.35); 
     var losangeles = new L.LatLng(33.82, -118.38);
-    
     Geodesic.setLatLngs([[berlin, losangeles]]);
-    */
+    //################################
+    
 };

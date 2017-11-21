@@ -61,6 +61,7 @@ body {
 
 .dropbtn {
     background-color: #4CAF50;
+    border-radius: 5px;
     color: white;
     padding: 8px;
     font-size: 16px;
@@ -101,6 +102,8 @@ body {
     display: block;
     z-index: 99;
 }
+
+.crosshatch { background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc4JyBoZWlnaHQ9JzgnPgogIDxyZWN0IHdpZHRoPSc4JyBoZWlnaHQ9JzgnIGZpbGw9JyNmZmYnLz4KICA8cGF0aCBkPSdNMCAwTDggOFpNOCAwTDAgOFonIHN0cm9rZS13aWR0aD0nMC41JyBzdHJva2U9JyNhYWEnLz4KPC9zdmc+Cg=="); background-repeat: repeat; }
 
 .dropdown a:hover {background-color: #f1f1f1}
 

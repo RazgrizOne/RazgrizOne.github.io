@@ -34,8 +34,10 @@ function changeDate(date) {
 //type - String: the new base data type
 //
 //changeBaseData changes the data you are working with.
-function changeBaseData(DataIdentifier) {
-    console.log("changeBaseData was called")
+function changeBaseData(basestring) {
+    console.log("changeBaseData was called:   " + basestring)
+    basedata = basestring
+    //reset graph and map. Need a method for reset all
     data.eachLayer(function (layer) {
         layer.setStyle(calcStyle(layer.feature))
     });
