@@ -1,31 +1,16 @@
-var chart
-var datapoints
-var countrynames
-var months
-//might delete this
-var databank
-//use for datasets:
-var datasets
-//use for data:
-var data_data
-//use for labels:
-var labels
-
-var chart
-
-var ctx
-
 Chart.defaults.global.responsive = false
-
 
 //I want to remember how to do this if it comes in handy
 //datapoints.push({ year: getData(json_data.features[i]), value: getName(json_data.features[i]) })
 
+//Input:  None
+//Output: databank (package of data and labels which is used when drawing the graph)
+//Method: loads target data into a package.
+//Dependancy: Who knows :)
 function graphLoader(){
-   // console.log(getData(json_data.features[0]))
-    datasets = []
-    data_data = []
-    labels = []
+    var datasets = []
+    var data_data = []
+    var labels = []
 
     for (i = 0; i < json_data.features.length; i++) {
         if(getData(json_data.features[i]) > 0 && getName(json_data.features[i]) != "Mexico" && getName(json_data.features[i]) != "Canada" )
@@ -35,18 +20,23 @@ function graphLoader(){
         }
     } 
 
-    databank = {
+    var databank = {
         datasets: [{
             data: data_data
         }],
-    
-        // These labels appear in the legend and in the tooltips when hovering different arcs
         labels: labels
     };
+
+    return databank
 }
 
-function buildGraph(){
 
+//Input:  None
+//Output: databank
+//Method: build or rebuild a graph.
+//Dependancy: Who knows :)
+function buildGraph(){
+    var chart
     graphLoader()
     console.log(chart)
     if(chart != undefined){
@@ -54,15 +44,17 @@ function buildGraph(){
         chart.destroy()
     }
     
-    ctx = document.getElementById('results-graph').getContext('2d');
+    var ctx = document.getElementById('results-graph').getContext('2d');
     ctx.canvas.width = 300;
     ctx.canvas.height = 300;
     chart = new Chart(ctx, {
         // The type of chart we want to create
+        // type: 'typehere',
         type: 'polarArea',
     
         // The data for our dataset
-        data: databank
+        // data: {[ data: [1,2,3] , labels: [me,you,them] ]}
+        data: graphLoader()
     
         // Configuration options go here
         //options: options
