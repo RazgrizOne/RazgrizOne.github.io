@@ -34,7 +34,22 @@
     <div id="mapDivId"></div>
 -->
 
-<header>2016 Tourism</header>
+<div class="content" style="position:absolute; z-index:99; top:40px; left:300px;">January <span class='value'></span></div>
+<div style="z-index:99; position:absolute; top:40px; left: 200px;">Tourism 2016,</div>
+<div style="z-index:98; position:absolute; top:40px; left: 50px; background-color: #AA7239; width:100%; height:24px;"></div>
+<div style="z-index:98; position:absolute; top:0px; left: 210px; background-color: #540B00; width:100%; height:37px;"></div>
+
+<div class="otherContainer">
+        <div id="logo" style="width:200px;height:200px; position:absolute;z-index:10; bottom:150px; right:100px;"> 
+                <canvas id="results-graph", ></canvas>
+         </div>
+        <div postion = "absolute", width = "400px", height = "400px", z-index = 99>
+                
+                
+        </div>
+    <div id="mapDiv"></div>
+        
+    <canvas id="results-graph", z-index = 99></canvas></div>
 <div class="dropdown">
     <button onclick="myFunction()" class="dropbtn">Data Set</button>
       <div id="myDropdown" class="dropdown-content">
@@ -44,7 +59,7 @@
       </div>
     </div>
 <div class="dropdown">
-    <button onclick="myFunction()" class="dropbtn">Data Set</button>
+    <button onclick="myFunction()" class="dropbtn">Filter</button>
       <div id="myDropdown" class="dropdown-content">
         <a href="#home", onclick="changeDate(1)">Home</a>
         <a href="#about">About</a>
@@ -53,14 +68,15 @@
     </div>
 <button id = "minus", onclick="changeDate(-1)">Previous Month</button>
 <button id = "plus", onclick="changeDate(1)">Next Month</button>
-<div class="content">January <span class='value'></span></div>
-<div class='flex-container'>
+
+<!--<div class='flex-container'>
         <div id="mapDiv"></div>
-        
-</div>
-<div class='flex-container'>
-        <canvas id="results-graph"></canvas>
-</div>
+</div>-->
+<div id="wrapper"><div id="mapDiv"></div></div>
+
+
+
+
 </body>
 
 

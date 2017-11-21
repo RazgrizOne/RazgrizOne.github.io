@@ -15,7 +15,7 @@ var chart
 
 var ctx
 
-Chart.defaults.global.responsive = true
+Chart.defaults.global.responsive = false
 
 
 //I want to remember how to do this if it comes in handy
@@ -55,6 +55,8 @@ function buildGraph(){
     }
     
     ctx = document.getElementById('results-graph').getContext('2d');
+    ctx.canvas.width = 300;
+    ctx.canvas.height = 300;
     chart = new Chart(ctx, {
         // The type of chart we want to create
         type: 'polarArea',
