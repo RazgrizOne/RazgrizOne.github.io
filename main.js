@@ -120,6 +120,7 @@ function getCountryColor(number) {
 //Dependancy: Plenty
 window.onload = function () {
 
+    //set values for PC
     var minzoomlevel = 2;
     var bounds = ([
         //corner 1
@@ -128,6 +129,7 @@ window.onload = function () {
         [-60, 300]
     ]),
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+        //Set values here if dealing with mobile device.
         minzoomlevel = 1;
         bounds = ([
             //corner 1
@@ -143,12 +145,7 @@ window.onload = function () {
         minZoom: minzoomlevel,
         
         //this limits how much the map can be panned
-        maxBounds: ([
-            //corner 1
-            [90, -180],
-            //corner 2
-            [-60, 300]
-        ]),
+        maxBounds: bounds,
         maxBoundsViscosity: 1.0
     });
 
