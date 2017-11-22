@@ -47,20 +47,22 @@ function getData(feature){
 //Method: sets the style of the drawn country based on the current target data.
 //Dependancy: getData(), getCountryColor()
 function calcStyle(feature) {
-    var featureweight = .25;
+    var featureweight = 0;
     var featurecolor = "black";
+    var opacity = 0;
     if (getData(feature) > 0) {
         featurecolor = "black";
-        featureweight = 1.5;
+        featureweight = 0;
+        opacity = .5
     }
 
     return {
         fillColor: getCountryColor(getData(feature)),
         weight: featureweight,
-        opacity: 1,
+        opacity: opacity,
         color: featurecolor,
         //dashArray: 3,
-        fillOpacity: 0.7
+        fillOpacity: opacity
     }
 }
 
@@ -92,8 +94,19 @@ function getCountryColor(number) {
             r:60
         }).toCSS();
     }
+
+    
+
+    if(number > maxvalue){
+        return Color({
+            h:240,
+            s:80,
+            l:50
+        }).toCSS();
+    }
+
     return Color({
-        h: 0,
+        h: 240,
         s: (number / maxvalue) * 100,
         l: 50
     }).toCSS();
@@ -110,7 +123,16 @@ window.onload = function () {
     //Load the map layer.
     map = L.map('mapDiv', {
         center: [51.505, -0.09],
-        zoom: 1
+        zoom: 2,
+        minZoom: 2,
+        //this limits how much the map can be panned
+        maxBounds: ([
+            //corner 1
+            [90, -180],
+            //corner 2
+            [-60, 300]
+        ]),
+        maxBoundsViscosity: 1.0
     });
 
     //load data from JSON file
@@ -121,6 +143,16 @@ window.onload = function () {
             onEachFeature: actionMethodList
         }
     )
+
+    var baseMap = L.tileLayer('https://api.mapbox.com/styles/v1/amasw87/cjaal9d4k2kpi2snt65k9b7c8/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYW1hc3c4NyIsImEiOiJjajZ6aG50bnUwMGpqMnBvOGJjNTk0cHFvIn0.IXHyLgImAw0H_dlCs7ZEgA', {
+        maxZoom: 18,
+        attribution: "&copy; <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> &copy; <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a>"
+    }).addTo(map);
+
+    //var baseMap2 = L.tileLayer('Mapbox.json', {
+    //    maxZoom: 18,
+    //    attribution: "&copy; <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> &copy; <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a>"
+    //}).addTo(map);
 
     //add JSON as its own layer in the map.
     map.addLayer(data);
