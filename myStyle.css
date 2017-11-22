@@ -43,6 +43,11 @@ body {
     height: 100%;
 }
 
+.hud{
+    z-index:99; 
+    position:absolute;
+}
+
 #mapDiv {
     background-color: #6B949F;  
     width: 100%;

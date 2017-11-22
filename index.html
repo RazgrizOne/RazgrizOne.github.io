@@ -4,15 +4,13 @@
 <head>
     <meta charset="UTF-8" />
     <title>
-        Graphing US Tourism
+        US Tourism Map
     </title>
-    <!-- Leaflet -->
     <link rel="stylesheet" href="leaflet/leaflet.css" />
     <link rel="stylesheet" href="myStyle.css"/>
     <script src="leaflet/leaflet.js"></script>
     <script src="Leaflet.Geodesic.js"></script>
     <script type="text/javascript" src="plugins/color.js"></script>
-    <!--<script src="Countries.js"></script>-->
     <script src="JsonData.js"></script>
     <script src="actions.js"></script>
     <script src="buttons.js"></script>
@@ -25,12 +23,15 @@
 <body>
 
 <div class="otherContainer">
+  <!--Elements with the hud class will layer in the order they are drawn-->
+  <!--Use left,right,top,bottom to place elements relative to window sides-->
         <div class="content" style="position:absolute; z-index:99; top:40px; left:300px;">January <span class='value'></span></div>
-        <div style="z-index:99; position:absolute; top:40px; left: 200px;">Tourism 2016,</div>
-        <div style="z-index:98; position:absolute; top:40px; left: 50px; background-color: #AA7239; width:100%; height:24px; border-radius: 5px;"></div>
-        <div style="z-index:97; position:absolute; top:-2px; left: 46px; background-color: #D4786A; width:100%; height:70px; border-radius: 5px;"></div>
-        <div style="z-index:98; position:absolute; top:0px; left: 210px; background-color: #540B00; width:100%; height:37px; border-radius: 5px;"></div>
-        <div style="z-index:96; position:absolute; right:0px;width:325px; height:100%; background-color: #D4786A"></div>
+        <div class="hud" style="top:40px; left: 200px;">Tourism 2016,</div>
+        <div class="hud" style="right:0px;width:325px; height:100%; background-color: #D4786A"></div>
+        <div class="hud" style="top:-2px; left: 46px; background-color: #D4786A; width:100%; height:70px; border-radius: 5px;"></div>
+        <div class="hud" style="top:40px; left: 50px; background-color: #AA7239; width:100%; height:24px; border-radius: 5px;"></div>
+        <div class="hud" style="top:0px; left: 210px; background-color: #540B00; width:100%; height:37px; border-radius: 5px;"></div>
+        
         <div id="logo" style="width:200px;height:200px; position:absolute;z-index:99; bottom:150px; right:100px;">
                 <canvas id="results-graph" style="z-index:99;"></canvas>
          </div>
@@ -49,8 +50,8 @@
         <a href="#contact", onclick="changeBaseData('MEX_CAN_2016_')">Canada, Mexico, International</a>
       </div>
     </div>
-<button id = "minus", style="z-index:99; position:absolute; left:400px; top: 8px; border-radius: 5px;", onclick="changeDate(-1)">Previous Month</button>
-<button id = "plus", style="z-index:99; position:absolute; left:600px; top: 8px; border-radius: 5px;", onclick="changeDate(1)">Next Month</button>
+<button id = "minus", class = "hud" style="left:400px; top: 8px; border-radius: 5px;", onclick="changeDate(-1)">Previous Month</button>
+<button id = "plus", class = "hud" style="left:600px; top: 8px; border-radius: 5px;", onclick="changeDate(1)">Next Month</button>
 
 <div id="wrapper"><div id="mapDiv"></div></div>
 
