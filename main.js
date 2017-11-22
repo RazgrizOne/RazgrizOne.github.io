@@ -136,10 +136,10 @@ window.onload = function () {
     if ((height < 586 && width < 1095) || height < 325 || (width < 700 && height > 586)) {
         minzoomlevel = 1;
         bounds = ([
-        //corner 1
-        [90, -180],
-        //corner 2
-        [-60, 400]
+            //corner 1
+            [90, -180],
+            //corner 2
+            [-60, 400]
         ])
     }
 
@@ -154,6 +154,8 @@ window.onload = function () {
         maxBoundsViscosity: 1.0
     });
 
+    console.log(map)
+
     //load data from JSON file
     data = L.geoJSON(
         json_data,
@@ -163,18 +165,12 @@ window.onload = function () {
         }
     )
 
-
+    /*
     var baseMap = L.tileLayer('https://api.mapbox.com/styles/v1/amasw87/cjaal9d4k2kpi2snt65k9b7c8/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYW1hc3c4NyIsImEiOiJjajZ6aG50bnUwMGpqMnBvOGJjNTk0cHFvIn0.IXHyLgImAw0H_dlCs7ZEgA', {
         maxZoom: 18,
-        renderWorldCopies: false,
         attribution: "&copy; <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> &copy; <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a>"
     }).addTo(map);
-
-
-    var baseMap2 = L.tileLayer('Mapbox.json', {
-        maxZoom: 18,
-        attribution: "&copy; <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> &copy; <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a>"
-    }).addTo(map);
+    */
 
     //add JSON as its own layer in the map.
     map.addLayer(data);
@@ -185,7 +181,6 @@ window.onload = function () {
 
     //Geodesic line test. Needs work.
     //###############################
-    /*
     var Geodesic = L.geodesic([], {
         weight: 7,
         opacity: 0.5,
@@ -195,7 +190,6 @@ window.onload = function () {
     var berlin = new L.LatLng(52.5, 13.35);
     var losangeles = new L.LatLng(33.82, -118.38);
     Geodesic.setLatLngs([[berlin, losangeles]]);
-    */
     //################################
 
-};
+}
