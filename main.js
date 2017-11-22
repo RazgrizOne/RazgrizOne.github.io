@@ -5,13 +5,15 @@ var dataLayer;
 var map;
 var data;
 
-//Max value of data: used in styling. Maybe the method should find this instead of saving it.
+//Max value of data: used in styling. Maybe the method should find this instead of saving it here.
 var maxvalue = 510000;
 
 //Target Data: MONTH
 var currentdate = 1;
 
 //Target Data: DATA names, mostly just for reference.
+//If you append data to the JSON file it should have these names + the month.
+//Talk to Andrew you are confused how the data should be formatted.
 var TOP20 = "T_2016_";
 var TOPPORTS = "PORTS_2016_";
 var MEXCAN = "MEX_CAN_2016_";
@@ -34,7 +36,7 @@ function getName(feature){
 //Input:  JSON feature  EX: json_data.features[i] or json_data.features["Country_name_here"]
 //Output: target data value
 //Method: simply a way to save time.
-//Dependancy: Uses the global data target datastring
+//Dependancy: Uses the global data target variable 'datastring'
 function getData(feature){
     return feature.properties[datastring];
     //return feature.properties["T_2016_1"]
