@@ -120,11 +120,16 @@ function getCountryColor(number) {
 //Dependancy: Plenty
 window.onload = function () {
 
+    var minzoomlevel = 2;
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+        minzoomlevel = 1;
+    }
     //Load the map layer.
     map = L.map('mapDiv', {
         center: [51.505, -0.09],
         zoom: 2,
-        minZoom: 2,
+        minZoom: minzoomlevel,
+        
         //this limits how much the map can be panned
         maxBounds: ([
             //corner 1
