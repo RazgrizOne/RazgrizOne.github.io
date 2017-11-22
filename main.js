@@ -121,8 +121,20 @@ function getCountryColor(number) {
 window.onload = function () {
 
     var minzoomlevel = 2;
+    var bounds = ([
+        //corner 1
+        [90, -180],
+        //corner 2
+        [-60, 300]
+    ]),
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
         minzoomlevel = 1;
+        bounds = ([
+            //corner 1
+            [110, -180],
+            //corner 2
+            [-60, 400]
+        ])
     }
     //Load the map layer.
     map = L.map('mapDiv', {
