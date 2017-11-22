@@ -134,6 +134,7 @@ window.onload = function () {
 
     //set values for smaller screens
     if ((height < 586 && width < 1095) || height < 325 || (width < 700 && height > 586)) {
+        minzoomlevel = 1;
         bounds = ([
         //corner 1
         [90, -180],
