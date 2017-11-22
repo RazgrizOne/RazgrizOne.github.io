@@ -28,7 +28,7 @@ function changeDate(date) {
     });
 
     document.querySelector('.content').innerHTML = months[currentdate - 1];
-    buildGraph();
+    buildGraph();   
 }
 
 //type - String: the new base data type
