@@ -1,4 +1,4 @@
-Chart.defaults.global.responsive = false
+Chart.defaults.global.responsive = true
 
 //I want to remember how to do this if it comes in handy
 //datapoints.push({ year: getData(json_data.features[i]), value: getName(json_data.features[i]) })

@@ -29,7 +29,7 @@ var datastring = "T_2016_1";
 //Output: target feature name
 //Method: simply a way to save time.
 //Dependancy: None
-function getName(feature){
+function getName(feature) {
     return feature.properties["name"];
 }
 
@@ -37,7 +37,7 @@ function getName(feature){
 //Output: target data value
 //Method: simply a way to save time.
 //Dependancy: Uses the global data target variable 'datastring'
-function getData(feature){
+function getData(feature) {
     return feature.properties[datastring];
     //return feature.properties["T_2016_1"]
 }
@@ -87,21 +87,21 @@ function actionMethodList(feature, layer) {
 //Dependancy: No custom code
 function getCountryColor(number) {
     var tempnumber = number;
-    if (number == 0){
+    if (number == 0) {
         return Color({
-            b:61,
-            g:60,
-            r:60
+            b: 61,
+            g: 60,
+            r: 60
         }).toCSS();
     }
 
-    
 
-    if(number > maxvalue){
+
+    if (number > maxvalue) {
         return Color({
-            h:240,
-            s:80,
-            l:50
+            h: 240,
+            s: 80,
+            l: 50
         }).toCSS();
     }
 
@@ -128,22 +128,15 @@ window.onload = function () {
         //corner 2
         [-60, 300]
     ]),
-    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
-        //Set values here if dealing with mobile device.
-        minzoomlevel = 1;
-        bounds = ([
-            //corner 1
-            [110, -180],
-            //corner 2
-            [-60, 400]
-        ])
-    }
+
+    //was going to set values for mobile here, but it is difficult to accurately detect mobile.
+
     //Load the map layer.
     map = L.map('mapDiv', {
         center: [51.505, -0.09],
         zoom: 2,
         minZoom: minzoomlevel,
-        
+
         //this limits how much the map can be panned
         maxBounds: bounds,
         maxBoundsViscosity: 1.0
@@ -174,18 +167,18 @@ window.onload = function () {
     //Load data for the graph and Create the graph.
     graphLoader()
     buildGraph()
-    
+
     //Geodesic line test. Needs work.
     //###############################
     var Geodesic = L.geodesic([], {
-        weight: 7, 
+        weight: 7,
         opacity: 0.5,
         color: 'blue',
         steps: 50
     }).addTo(map);
-    var berlin = new L.LatLng(52.5, 13.35); 
+    var berlin = new L.LatLng(52.5, 13.35);
     var losangeles = new L.LatLng(33.82, -118.38);
     Geodesic.setLatLngs([[berlin, losangeles]]);
     //################################
-    
+
 };

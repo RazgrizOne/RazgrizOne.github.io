@@ -49,7 +49,7 @@ body {
 }
 
 #mapDiv {
-    background-color: #514C48;  
+    background-color: 514C48;  
     width: 100%;
     height: 100%;
     margin: 0px;
@@ -65,7 +65,7 @@ body {
 }
 
 .dropbtn {
-    background-color: #4CAF50;
+    background-color: #C4C4C4;
     border-radius: 5px;
     color: white;
     padding: 8px;
