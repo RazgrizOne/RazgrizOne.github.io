@@ -1,4 +1,8 @@
 Chart.defaults.global.responsive = true
+Chart.defaults.global.defaultColor = Color({h: 0, s: 80,l: 50}).toCSS();
+Chart.defaults.global.defaultFontColor = 'red';
+
+var chart
 
 //I want to remember how to do this if it comes in handy
 //datapoints.push({ year: getData(json_data.features[i]), value: getName(json_data.features[i]) })
@@ -22,7 +26,15 @@ function graphLoader(){
 
     var databank = {
         datasets: [{
-            data: data_data
+            data: data_data,
+            backgroundColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
         }],
         labels: labels
     };
@@ -36,7 +48,7 @@ function graphLoader(){
 //Method: build or rebuild a graph.
 //Dependancy: Who knows :)
 function buildGraph(){
-    var chart
+    chart
     graphLoader()
     console.log(chart)
     if(chart != undefined){
@@ -50,14 +62,16 @@ function buildGraph(){
     chart = new Chart(ctx, {
         // The type of chart we want to create
         // type: 'typehere',
-        type: 'polarArea',
+        type: 'horizontalBar',
     
         // The data for our dataset
         // data: {[ data: [1,2,3] , labels: [me,you,them] ]}
-        data: graphLoader()
+        data: graphLoader(),
     
         // Configuration options go here
-        //options: options
+   
+        //options:
+            
     });
     
 }

@@ -42,6 +42,10 @@ function getData(feature) {
     //return feature.properties["T_2016_1"]
 }
 
+function crossHighlight(event){
+    console.log(event)
+}
+
 //Input:  JSON feature  EX: json_data.features[i] or json_data.features["Country_name_here"]
 //Output: Style list
 //Method: sets the style of the drawn country based on the current target data.
@@ -52,7 +56,7 @@ function calcStyle(feature) {
     var opacity = 0;
     if (getData(feature) > 0) {
         featurecolor = "black";
-        featureweight = 0;
+        featureweight = 5;
         opacity = .5
     }
 
@@ -95,8 +99,6 @@ function getCountryColor(number) {
         }).toCSS();
     }
 
-
-
     if (number > maxvalue) {
         return Color({
             h: 240,
@@ -120,8 +122,7 @@ function getCountryColor(number) {
 //Dependancy: Plenty
 window.onload = function () {
 
-    var height = $(window).height();
-    var width = $(window).width();
+
 
     //set values for PC
     var minzoomlevel = 2;
@@ -130,8 +131,12 @@ window.onload = function () {
         [90, -180],
         //corner 2
         [-60, 300]
-    ])
+    ]);
 
+
+
+    var height = $(window).height();
+    var width = $(window).width();
     //set values for smaller screens
     if ((height < 586 && width < 1095) || height < 325 || (width < 700 && height > 586)) {
         minzoomlevel = 1;
@@ -154,8 +159,6 @@ window.onload = function () {
         maxBoundsViscosity: 1.0
     });
 
-    console.log(map)
-
     //load data from JSON file
     data = L.geoJSON(
         json_data,
@@ -164,13 +167,13 @@ window.onload = function () {
             onEachFeature: actionMethodList
         }
     )
-
-    /*
-    var baseMap = L.tileLayer('https://api.mapbox.com/styles/v1/amasw87/cjaal9d4k2kpi2snt65k9b7c8/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYW1hc3c4NyIsImEiOiJjajZ6aG50bnUwMGpqMnBvOGJjNTk0cHFvIn0.IXHyLgImAw0H_dlCs7ZEgA', {
+//https://api.mapbox.com/styles/v1/amasw87/cjaal9d4k2kpi2snt65k9b7c8/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYW1hc3c4NyIsImEiOiJjajZ6aG50bnUwMGpqMnBvOGJjNTk0cHFvIn0.IXHyLgImAw0H_dlCs7ZEgA
+//https://api.mapbox.com/styles/v1/amasw87/cjaffnvjx64um2rkan8pwg1to/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYW1hc3c4NyIsImEiOiJjajZ6aG50bnUwMGpqMnBvOGJjNTk0cHFvIn0.IXHyLgImAw0H_dlCs7ZEgA
+    L.tileLayer('https://api.mapbox.com/styles/v1/amasw87/cjaffnvjx64um2rkan8pwg1to/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYW1hc3c4NyIsImEiOiJjajZ6aG50bnUwMGpqMnBvOGJjNTk0cHFvIn0.IXHyLgImAw0H_dlCs7ZEgA', {
         maxZoom: 18,
         attribution: "&copy; <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> &copy; <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a>"
     }).addTo(map);
-    */
+
 
     //add JSON as its own layer in the map.
     map.addLayer(data);
@@ -181,6 +184,7 @@ window.onload = function () {
 
     //Geodesic line test. Needs work.
     //###############################
+    /*
     var Geodesic = L.geodesic([], {
         weight: 7,
         opacity: 0.5,
@@ -190,6 +194,8 @@ window.onload = function () {
     var berlin = new L.LatLng(52.5, 13.35);
     var losangeles = new L.LatLng(33.82, -118.38);
     Geodesic.setLatLngs([[berlin, losangeles]]);
+    */
     //################################
 
 }
+    ;

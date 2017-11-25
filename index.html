@@ -18,11 +18,13 @@
   <script src="plugins/color.js"></script>
 
   <!--I may attempt to use the Mapbox api for added functionality-->
+  <!--
   <script src='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js'></script>
   <link href='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css' rel='stylesheet' />
+  -->
   <!--If we don't end up using it, we can just delete these later-->
-  
-  
+
+
   <!-- Need to download and get Jquery working server side -->
   <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
   <!-- Need to download and get Jquery working server side -->
@@ -32,34 +34,36 @@
   <script src="main.js"></script>
 </head>
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
 
 <body>
+    
   <div class="otherContainer">
     <!--Elements with the hud class will layer in the order they are drawn-->
     <!--Use left,right,top,bottom to place elements relative to window sides-->
     <!--Is this the best way to do this? Who knows, it works well though-->
-
     
-    <div class="hud" style="width:100%; height:100%; background-color: #FFFFFF"></div>
+    <div class="hud" style="width:100%; height:100%; background-color: #FFFFFF">
+        <div id="mapDiv"></div>
+    </div>
     <div class="hud" style="right:10%; top:10%; width:20%; height:80%; opacity: .5;  background-color: #FFFFFF"></div>
     <div class="hud" style="top:-2px; left: 0px; background-color: #B66F2C; width:100%; height:40px; border-radius: 5px;"></div>
     <div class="hud" style="top:0px; left: 0px; background-color: #C4C4C4; width:100%; height:37px; border-radius: 5px;"></div>
     <div class="hud" style="top:8px; left: 200px;">Tourism 2016,</div>
-    <div class="content" style="position:absolute; z-index:99; top:8px; left:300px;">January <span class='value'></span></div>
-
-    <div class="hud" style="top:10%; right:10%; width:20%; height:80%;">
+    <div class="content" style="position:absolute; z-index:99; top:8px; left:300px;">January <span class='value'></span></div>\
+    
+    <div class="hud" style="top:10%; right:10%; width:20%; height:80%; z-index:99;">
       <canvas id="results-graph" style="z-index:99;"></canvas>
     </div>
-
-    <div id="mapDiv"></div>
+    
   </div>
-
+  
 
   <div class="dropdown">
-    <img class= "dropbtn" src="dropdown.png" onclick="myFunction()" alt="Smiley face" height="21" width="42"> 
+    <img class="dropbtn" src="dropdown.png" onclick="myFunction()" alt="Smiley face" height="21" width="42">
     <div id="myDropdown" class="dropdown-content">
-      
+
       <a href="#home" , onclick="changeBaseData('T_2016_')">Top 20 Inbound</a>
       <a href="#about" , onclick="changeBaseData('PORTS_2016_')">Top Ports U.S</a>
       <a href="#contact" , onclick="changeBaseData('MEX_CAN_2016_')">Canada, Mexico, International</a>
@@ -70,6 +74,8 @@
   <button id="minus" , class="hud" style="left:400px; top: 8px; border-radius: 5px;" , onclick="changeDate(-1)">Previous Month</button>
   <button id="plus" , class="hud" style="left:600px; top: 8px; border-radius: 5px;" , onclick="changeDate(1)">Next Month</button>
 </body>
+
+
 
 <script>
   function myFunction() {
