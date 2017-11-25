@@ -42,7 +42,7 @@ function getData(feature) {
     //return feature.properties["T_2016_1"]
 }
 
-function crossHighlight(event){
+function crossHighlight(event) {
     console.log(event)
 }
 
@@ -57,7 +57,7 @@ function calcStyle(feature) {
     if (getData(feature) > 0) {
         featurecolor = "black";
         featureweight = 5;
-        opacity = .5
+        opacity = .8
     }
 
     return {
@@ -133,8 +133,6 @@ window.onload = function () {
         [-60, 300]
     ]);
 
-
-
     var height = $(window).height();
     var width = $(window).width();
     //set values for smaller screens
@@ -167,8 +165,11 @@ window.onload = function () {
             onEachFeature: actionMethodList
         }
     )
-//https://api.mapbox.com/styles/v1/amasw87/cjaal9d4k2kpi2snt65k9b7c8/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYW1hc3c4NyIsImEiOiJjajZ6aG50bnUwMGpqMnBvOGJjNTk0cHFvIn0.IXHyLgImAw0H_dlCs7ZEgA
-//https://api.mapbox.com/styles/v1/amasw87/cjaffnvjx64um2rkan8pwg1to/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYW1hc3c4NyIsImEiOiJjajZ6aG50bnUwMGpqMnBvOGJjNTk0cHFvIn0.IXHyLgImAw0H_dlCs7ZEgA
+
+    
+
+    //https://api.mapbox.com/styles/v1/amasw87/cjaal9d4k2kpi2snt65k9b7c8/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYW1hc3c4NyIsImEiOiJjajZ6aG50bnUwMGpqMnBvOGJjNTk0cHFvIn0.IXHyLgImAw0H_dlCs7ZEgA
+    //https://api.mapbox.com/styles/v1/amasw87/cjaffnvjx64um2rkan8pwg1to/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYW1hc3c4NyIsImEiOiJjajZ6aG50bnUwMGpqMnBvOGJjNTk0cHFvIn0.IXHyLgImAw0H_dlCs7ZEgA
     L.tileLayer('https://api.mapbox.com/styles/v1/amasw87/cjaffnvjx64um2rkan8pwg1to/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYW1hc3c4NyIsImEiOiJjajZ6aG50bnUwMGpqMnBvOGJjNTk0cHFvIn0.IXHyLgImAw0H_dlCs7ZEgA', {
         maxZoom: 18,
         attribution: "&copy; <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> &copy; <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a>"
@@ -178,13 +179,39 @@ window.onload = function () {
     //add JSON as its own layer in the map.
     map.addLayer(data);
 
+    // Creates a red marker with the coffee icon
+    /*
+    var redMarker = L.AwesomeMarkers.icon({
+        icon: 'coffee',
+        markerColor: 'red'
+    });
+
+    var geojson = L.geoJson(json_data, {
+        onEachFeature: function (feature, layer) {
+            if (feature.geometry.type === 'Polygon' || feature.geometry.type === 'MultiPolygon') {
+                console.log('Polygon detected');
+                var centroid = turf.centroid(feature);
+                var lon = centroid.geometry.coordinates[0];
+                var lat = centroid.geometry.coordinates[1];
+                L.marker([lat, lon], { icon: redMarker }).addTo(map);
+            }
+        }
+    });
+    */
+
+    //geojson.addTo(map);
+
     //Load data for the graph and Create the graph.
     graphLoader()
     buildGraph()
 
     //Geodesic line test. Needs work.
     //###############################
-    /*
+
+
+    for (i = 0; i < json_data.features.length; i++){
+         
+    }
     var Geodesic = L.geodesic([], {
         weight: 7,
         opacity: 0.5,
@@ -194,7 +221,6 @@ window.onload = function () {
     var berlin = new L.LatLng(52.5, 13.35);
     var losangeles = new L.LatLng(33.82, -118.38);
     Geodesic.setLatLngs([[berlin, losangeles]]);
-    */
     //################################
 
 }
