@@ -151,6 +151,9 @@ window.onload = function () {
         center: [51.505, -0.09],
         zoom: 2,
         minZoom: minzoomlevel,
+        //how to change the coordinate system
+        //Won't change it for mapbox though.
+        //crs: L.CRS.EPSG4326,
 
         //this limits how much the map can be panned
         maxBounds: bounds,
@@ -172,6 +175,7 @@ window.onload = function () {
     //https://api.mapbox.com/styles/v1/amasw87/cjaffnvjx64um2rkan8pwg1to/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYW1hc3c4NyIsImEiOiJjajZ6aG50bnUwMGpqMnBvOGJjNTk0cHFvIn0.IXHyLgImAw0H_dlCs7ZEgA
     L.tileLayer('https://api.mapbox.com/styles/v1/amasw87/cjaffnvjx64um2rkan8pwg1to/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYW1hc3c4NyIsImEiOiJjajZ6aG50bnUwMGpqMnBvOGJjNTk0cHFvIn0.IXHyLgImAw0H_dlCs7ZEgA', {
         maxZoom: 18,
+        //continuousWorld: true,
         attribution: "&copy; <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> &copy; <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a>"
     }).addTo(map);
 
