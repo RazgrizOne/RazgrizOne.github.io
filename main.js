@@ -214,20 +214,20 @@ window.onload = function () {
     //Geodesic line test. Needs work.
     //###############################
 
-
+/*
     for (i = 0; i < json_data.features.length; i++){
          
     }
     var Geodesic = L.geodesic([], {
-        weight: 7,
-        opacity: 0.5,
+        weight: 10,
+        opacity: 1,
         color: 'blue',
-        steps: 50
+        steps: 100   
     }).addTo(map);
     var berlin = new L.LatLng(52.5, 13.35);
     var losangeles = new L.LatLng(33.82, -118.38);
     Geodesic.setLatLngs([[berlin, losangeles]]);
     //################################
-
+*/
 }
     ;
