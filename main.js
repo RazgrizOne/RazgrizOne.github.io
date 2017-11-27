@@ -133,9 +133,10 @@ window.onload = function () {
         [-60, 300]
     ]);
 
-    var height = $(window).height();
-    var width = $(window).width();
+    //var height = $(window).height();
+    //var width = $(window).width();
     //set values for smaller screens
+    /*
     if ((height < 586 && width < 1095) || height < 325 || (width < 700 && height > 586)) {
         minzoomlevel = 1;
         bounds = ([
@@ -145,6 +146,7 @@ window.onload = function () {
             [-60, 400]
         ])
     }
+    */
 
     //Load the map layer.
     map = L.map('mapDiv', {

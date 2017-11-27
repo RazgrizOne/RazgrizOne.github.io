@@ -1,4 +1,5 @@
 //methods called by actions go here
+//e stands for event
 
 function highlightFeature(e) {
     var layer = e.target;
