@@ -1,6 +1,6 @@
 Chart.defaults.global.responsive = true
 Chart.defaults.global.defaultColor = Color({h: 0, s: 80,l: 50}).toCSS();
-Chart.defaults.global.defaultFontColor = 'red';
+Chart.defaults.global.defaultFontColor = 'black';
 Chart.defaults.global.legend.display = false;
 
 var chart
