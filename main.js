@@ -42,6 +42,11 @@ function getData(feature) {
     //return feature.properties["T_2016_1"]
 }
 
+function getRank(feature) {
+    return feature.properties["R_" + currentdate];
+    //return feature.properties["T_2016_1"]
+}
+
 function crossHighlight(event) {
     console.log(event)
 }
@@ -57,11 +62,11 @@ function calcStyle(feature) {
     if (getData(feature) > 0) {
         featurecolor = "black";
         featureweight = 3;
-        opacity = .5
+        opacity = 1
     }
 
     return {
-        fillColor: getCountryColor(getData(feature)),
+        fillColor: getCountryColor(getRank(feature)),
         weight: featureweight,
         opacity: opacity,
         color: featurecolor,
@@ -108,9 +113,9 @@ function getCountryColor(number) {
     }
 
     return Color({
-        h: 240,
-        s: (number / maxvalue) * 100,
-        l: 50
+        h: 216,
+        s: number * 5,
+        l: 90 - (4* number)
     }).toCSS();
 }
 
@@ -169,7 +174,8 @@ window.onload = function () {
             style: calcStyle,
             onEachFeature: actionMethodList
         }
-    )
+    ).bindTooltip(function(layer){return layer.feature.properties.name;}
+).addTo(map);
 
     
 
@@ -177,14 +183,18 @@ window.onload = function () {
     //https://api.mapbox.com/styles/v1/amasw87/cjaffnvjx64um2rkan8pwg1to/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYW1hc3c4NyIsImEiOiJjajZ6aG50bnUwMGpqMnBvOGJjNTk0cHFvIn0.IXHyLgImAw0H_dlCs7ZEgA
     L.tileLayer('https://api.mapbox.com/styles/v1/pieisgood4u/cjaoe7l96fex02spepf1p7pmj/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoicGllaXNnb29kNHUiLCJhIjoiY2o2emd1bWg4MDA4MDMzbXluNjBtem5lMiJ9.jIGkrUiDkQXfUl4EVruO1g', {
         maxZoom: 18,
-        //continuousWorld: true,
         attribution: "&copy; <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> &copy; <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a>"
     }).addTo(map);
 
+    var labels = L.tileLayer('https://api.mapbox.com/styles/v1/pieisgood4u/cjaoilmgselqy2rkayslecuv4/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoicGllaXNnb29kNHUiLCJhIjoiY2o2emd1bWg4MDA4MDMzbXluNjBtem5lMiJ9.jIGkrUiDkQXfUl4EVruO1g', {
+        maxZoom: 18,
+        attribution: "&copy; <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> &copy; <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a>"
+    }).addTo(map);    
 
     //add JSON as its own layer in the map.
     map.addLayer(data);
 
+    
     // Creates a red marker with the coffee icon
     /*
     var redMarker = L.AwesomeMarkers.icon({

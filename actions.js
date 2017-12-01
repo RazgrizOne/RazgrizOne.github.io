@@ -1,5 +1,9 @@
 //methods called by actions go here
 //e stands for event
+function popup(e) {
+    var layer = e.target;
+    
+}
 
 function highlightFeature(e) {
     var layer = e.target;
