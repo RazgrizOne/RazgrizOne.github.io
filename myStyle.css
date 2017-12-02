@@ -65,7 +65,8 @@ body {
 }
 
 .dropbtn {
-    background-color: #C4C4C4;
+    background-color: #B66F2C;
+    opacity: .7; 
     border-radius: 5px;
     color: white;
     padding: 8px;
@@ -76,7 +77,7 @@ body {
 }
 
 .dropbtn:hover, .dropbtn:focus {
-    background-color: #3e8e41;
+    background-color: #FFFFFF;
     z-index: 99;
 }
 
@@ -84,13 +85,11 @@ body {
     position: relative;
     display: inline-block;
     left: 50px; 
-    
     z-index: 99;
 }
 
 .dropdown-content {
     display: none;
-    
     position: absolute;
     background-color: #f9f9f9;
     min-width: 160px;

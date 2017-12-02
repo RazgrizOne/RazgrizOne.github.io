@@ -33,6 +33,10 @@ function getName(feature) {
     return feature.properties["name"];
 }
 
+function getRelevant(feature) {
+    return feature.properties["name_1"] != null
+}
+
 //Input:  JSON feature  EX: json_data.features[i] or json_data.features["Country_name_here"]
 //Output: target data value
 //Method: simply a way to save time.
@@ -158,6 +162,7 @@ window.onload = function () {
         center: [51.505, -0.09],
         zoom: 2,
         minZoom: minzoomlevel,
+        zoomControl: false,
         //how to change the coordinate system
         //Won't change it for mapbox though.
         //crs: L.CRS.EPSG4326,
