@@ -8,4 +8,9 @@ Jacob Douglass (douglass.100@osu.edu)
 Jesse Haro (haro.11@osu.edu)
 Kelsey Glaze (glaze.57@osu.edu)
 
-Data Source: https://travel.trade.gov/research/monthly/arrivals/index.asp 
+Data Source: https://travel.trade.gov/research/monthly/arrivals/index.asp
+
+Libraries:  
+Leaflet - http://leafletjs.com/ 
+Chart.js - http://www.chartjs.org/ 
+Color.js - https://github.com/brehaut/color-js 
