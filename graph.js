@@ -108,14 +108,18 @@ function buildGraph() {
         //https://jsfiddle.net/94o6vc9w/
         options: {
             tooltips: {
-                //xAlign: 'left',
-                //yAlign: 'bottom'
+                backgroundColor: 'rgba(50, 50, 50, 0.4)',
+                displayColors: false,
+                position: 'nearest',
+                titleFontSize: 13,
+                bodyFontSize: 13,
+                xAlign: 'right'
             },
             scales: {
                 xAxes: [{
                     ticks: {
                         maxRotation: 0,
-                        max: 500000,
+                        max: 2000000,
                         stepSize: 250000,
                         minor: {
                             max: 500000,
