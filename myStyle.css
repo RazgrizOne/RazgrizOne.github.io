@@ -112,3 +112,7 @@ body {
 .dropdown a:hover {background-color: rgb(182, 111, 44)}
 
 .show {display:block;}
+
+.p {
+    font-size: 40%
+}
