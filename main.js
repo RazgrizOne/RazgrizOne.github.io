@@ -24,6 +24,7 @@ var basedata = "T_2016_";
 //Target Data: DATA + MONTH
 var datastring = "T_2016_1";
 
+var port_markers
 
 //Input:  JSON feature  EX: json_data.features[i] or json_data.features["Country_name_here"]
 //Output: target feature name
@@ -119,7 +120,7 @@ function getCountryColor(number) {
     return Color({
         h: 216,
         s: number * 5,
-        l: 90 - (4* number)
+        l: 90 - (4 * number)
     }).toCSS();
 }
 
@@ -179,10 +180,10 @@ window.onload = function () {
             style: calcStyle,
             onEachFeature: actionMethodList
         }
-    ).bindTooltip(function(layer){return layer.feature.properties.name;}
-).addTo(map);
+    ).bindPopup(function (layer) { return layer.feature.properties.name; }
+        ).addTo(map);
 
-    
+
 
     //https://api.mapbox.com/styles/v1/amasw87/cjaal9d4k2kpi2snt65k9b7c8/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYW1hc3c4NyIsImEiOiJjajZ6aG50bnUwMGpqMnBvOGJjNTk0cHFvIn0.IXHyLgImAw0H_dlCs7ZEgA
     //https://api.mapbox.com/styles/v1/amasw87/cjaffnvjx64um2rkan8pwg1to/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYW1hc3c4NyIsImEiOiJjajZ6aG50bnUwMGpqMnBvOGJjNTk0cHFvIn0.IXHyLgImAw0H_dlCs7ZEgA
@@ -194,12 +195,28 @@ window.onload = function () {
     var labels = L.tileLayer('https://api.mapbox.com/styles/v1/pieisgood4u/cjaoilmgselqy2rkayslecuv4/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoicGllaXNnb29kNHUiLCJhIjoiY2o2emd1bWg4MDA4MDMzbXluNjBtem5lMiJ9.jIGkrUiDkQXfUl4EVruO1g', {
         maxZoom: 18,
         attribution: "&copy; <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> &copy; <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a>"
-    }).addTo(map);    
+    }).addTo(map);
+
+    port_markers = L.geoJSON([ports], {
+
+        pointToLayer: function (feature, latlng) {
+            return L.circleMarker(latlng, {
+                radius: feature["properties"]["PORTS_" + currentdate] / 20000,
+                fillColor: "#ff7800",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            });
+        }
+    }).bindPopup(function(layer){return "<dl><dt>City: "+ layer.feature.properties.City+" </dt>"
+    + "<dt>People: " + String(layer.feature.properties["PORTS_" + currentdate]) + "</dt>"}
+).addTo(map);
 
     //add JSON as its own layer in the map.
     map.addLayer(data);
 
-    
+
     // Creates a red marker with the coffee icon
     /*
     var redMarker = L.AwesomeMarkers.icon({
@@ -229,20 +246,20 @@ window.onload = function () {
     //Geodesic line test. Needs work.
     //###############################
 
-/*
-    for (i = 0; i < json_data.features.length; i++){
-         
-    }
-    var Geodesic = L.geodesic([], {
-        weight: 10,
-        opacity: 1,
-        color: 'blue',
-        steps: 100   
-    }).addTo(map);
-    var berlin = new L.LatLng(52.5, 13.35);
-    var losangeles = new L.LatLng(33.82, -118.38);
-    Geodesic.setLatLngs([[berlin, losangeles]]);
-    //################################
-*/
+    /*
+        for (i = 0; i < json_data.features.length; i++){
+             
+        }
+        var Geodesic = L.geodesic([], {
+            weight: 10,
+            opacity: 1,
+            color: 'blue',
+            steps: 100   
+        }).addTo(map);
+        var berlin = new L.LatLng(52.5, 13.35);
+        var losangeles = new L.LatLng(33.82, -118.38);
+        Geodesic.setLatLngs([[berlin, losangeles]]);
+        //################################
+    */
 }
     ;

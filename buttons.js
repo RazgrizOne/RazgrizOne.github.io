@@ -8,7 +8,7 @@ function changeDate(date) {
     console.log(currentdate);
     currentdate += date;
 
-//prevent undifined date
+    //prevent undifined date
     if (currentdate > 12) {
         currentdate -= 1;
         return;
@@ -27,8 +27,21 @@ function changeDate(date) {
         layer.setStyle(calcStyle(layer.feature))
     });
 
+    port_markers.eachLayer(function (layer) {
+        layer.setStyle({
+            radius: layer.feature["properties"]["PORTS_" + currentdate] / 20000,
+            fillColor: "#ff7800",
+            color: "#000",
+            weight: 1,
+            opacity: 1,
+            fillOpacity: 0.8
+
+        })
+    }
+    );
+
     document.querySelector('.content').innerHTML = months[currentdate - 1];
-    buildGraph();   
+    buildGraph();
 }
 
 //type - String: the new base data type
