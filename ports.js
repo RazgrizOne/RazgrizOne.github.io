@@ -9,8 +9,8 @@ var ports = {
         {
             "geometry": {
                 "coordinates": [
-                    145.0,
-                    13.476615
+                    144.745128,
+                    13.476615 
                 ],
                 "type": "Point"
             },
