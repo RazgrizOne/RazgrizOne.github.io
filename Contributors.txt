@@ -1,0 +1,11 @@
+Created for the OSU course: GEOG 5201
+Department of Geography
+Instructor: Morteza Karimzadeh (karimzadeh.1@osu.edu)
+
+Contributors:
+Andrew Adkins (adkins.471@osu.edu)
+Jacob Douglass (douglass.100@osu.edu)
+Jesse Haro (haro.11@osu.edu)
+Kelsey Glaze (glaze.57@osu.edu)
+
+Data Source: https://travel.trade.gov/research/monthly/arrivals/index.asp 
