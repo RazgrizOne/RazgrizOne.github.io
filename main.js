@@ -38,6 +38,14 @@ function getRelevant(feature) {
     return feature.properties["name_1"] != null
 }
 
+function getCountryPopup(feature) {
+    if(getRelevant(feature)){
+    return "<dl><dt>Country: "+ feature.properties.name+" </dt>"
+    + "<dt>Tourists: " + String(feature.properties["T_2016_" + currentdate]) + "</dt>"
+    }
+    else {return feature.properties.name }
+}
+
 //Input:  JSON feature  EX: json_data.features[i] or json_data.features["Country_name_here"]
 //Output: target data value
 //Method: simply a way to save time.
@@ -180,7 +188,7 @@ window.onload = function () {
             style: calcStyle,
             onEachFeature: actionMethodList
         }
-    ).bindPopup(function (layer) { return layer.feature.properties.name; }
+    ).bindPopup(function (layer) { return getCountryPopup(layer.feature) }
         ).addTo(map);
 
 
@@ -210,7 +218,7 @@ window.onload = function () {
             });
         }
     }).bindPopup(function(layer){return "<dl><dt>City: "+ layer.feature.properties.City+" </dt>"
-    + "<dt>People: " + String(layer.feature.properties["PORTS_" + currentdate]) + "</dt>"}
+    + "<dt>Tourists: " + String(layer.feature.properties["PORTS_" + currentdate]) + "</dt>"}
 ).addTo(map);
 
     //add JSON as its own layer in the map.
