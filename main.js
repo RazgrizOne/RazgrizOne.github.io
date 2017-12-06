@@ -89,7 +89,7 @@ function actionMethodList(feature, layer) {
         {
             //mouseover: popup,
             //mouseout: removepopup,
-            click: zoomToFeature
+            //click: zoomToFeature
         }
     );
 }
