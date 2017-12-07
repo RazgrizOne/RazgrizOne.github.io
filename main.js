@@ -142,7 +142,7 @@ window.onload = function () {
         //corner 1
         [90, -180],
         //corner 2
-        [-60, 300]
+        [-60, 350]
     ]);
 
     map = L.map('mapDiv', {
@@ -198,9 +198,6 @@ window.onload = function () {
     + "<dt>Tourists: " + String(layer.feature.properties["PORTS_" + currentdate]) + "</dt>"}
 ).addTo(map);
 
-    //add JSON as its own layer in the map.
-    //map.addLayer(data);
-
     map.createPane('labels');
     map.getPane('labels').style.zIndex = 650;
     map.getPane('labels').style.pointerEvents = 'none';
@@ -211,50 +208,8 @@ window.onload = function () {
         pane: 'labels'
     }).addTo(map);
 
-    // Creates a red marker with the coffee icon
-    /*
-    var redMarker = L.AwesomeMarkers.icon({
-        icon: 'coffee',
-        markerColor: 'red'
-    });
-
-    var geojson = L.geoJson(json_data, {
-        onEachFeature: function (feature, layer) {
-            if (feature.geometry.type === 'Polygon' || feature.geometry.type === 'MultiPolygon') {
-                console.log('Polygon detected');
-                var centroid = turf.centroid(feature);
-                var lon = centroid.geometry.coordinates[0];
-                var lat = centroid.geometry.coordinates[1];
-                L.marker([lat, lon], { icon: redMarker }).addTo(map);
-            }
-        }
-    });
-    */
-
-    //geojson.addTo(map);
-
     //Load data for the graph and Create the graph.
     graphLoader()
     buildGraph()
-   
-
-    //Geodesic line test. Needs work.
-    //###############################
-
-    /*
-        for (i = 0; i < json_data.features.length; i++){
-             
-        }
-        var Geodesic = L.geodesic([], {
-            weight: 10,
-            opacity: 1,
-            color: 'blue',
-            steps: 100   
-        }).addTo(map);
-        var berlin = new L.LatLng(52.5, 13.35);
-        var losangeles = new L.LatLng(33.82, -118.38);
-        Geodesic.setLatLngs([[berlin, losangeles]]);
-        //################################
-    */
 }
-    ;
+;
