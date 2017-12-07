@@ -80,10 +80,10 @@ function calcStyle(feature) {
 
     return {
         fillColor: getCountryColor(getRank(feature)),
+        zIndex: 1,
         weight: featureweight,
         opacity: opacity,
         color: featurecolor,
-        //dashArray: 3,
         fillOpacity: opacity
     }
 }
@@ -106,7 +106,7 @@ function actionMethodList(feature, layer) {
 //Input:  value
 //Output: CSS color
 //Method: returns a color given a value.
-//Dependancy: No custom code
+//Dependancy: Colorjs
 function getCountryColor(number) {
     var tempnumber = number;
     if (number == 0) {
@@ -133,16 +133,10 @@ function getCountryColor(number) {
 }
 
 
-
-//Input:  None
-//Output: None
-//Method: This is the main method.
-//Dependancy: Plenty
 window.onload = function () {
 
 
 
-    //set values for PC
     var minzoomlevel = 2;
     var bounds = ([
         //corner 1
@@ -151,22 +145,6 @@ window.onload = function () {
         [-60, 300]
     ]);
 
-    //var height = $(window).height();
-    //var width = $(window).width();
-    //set values for smaller screens
-    /*
-    if ((height < 586 && width < 1095) || height < 325 || (width < 700 && height > 586)) {
-        minzoomlevel = 1;
-        bounds = ([
-            //corner 1
-            [90, -180],
-            //corner 2
-            [-60, 400]
-        ])
-    }
-    */
-
-    //Load the map layer.
     map = L.map('mapDiv', {
         center: [51.505, -0.09],
         zoom: 2,
@@ -200,12 +178,11 @@ window.onload = function () {
         attribution: "&copy; <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> &copy; <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a>"
     }).addTo(map);
 
-    var labels = L.tileLayer('https://api.mapbox.com/styles/v1/pieisgood4u/cjaoilmgselqy2rkayslecuv4/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoicGllaXNnb29kNHUiLCJhIjoiY2o2emd1bWg4MDA4MDMzbXluNjBtem5lMiJ9.jIGkrUiDkQXfUl4EVruO1g', {
-        maxZoom: 18,
-        attribution: "&copy; <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> &copy; <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a>"
-    }).addTo(map);
+
 
     port_markers = L.geoJSON([ports], {
+
+        
 
         pointToLayer: function (feature, latlng) {
             return L.circleMarker(latlng, {
@@ -222,8 +199,17 @@ window.onload = function () {
 ).addTo(map);
 
     //add JSON as its own layer in the map.
-    map.addLayer(data);
+    //map.addLayer(data);
 
+    map.createPane('labels');
+    map.getPane('labels').style.zIndex = 650;
+    map.getPane('labels').style.pointerEvents = 'none';
+
+    var labels = L.tileLayer('https://api.mapbox.com/styles/v1/pieisgood4u/cjaoilmgselqy2rkayslecuv4/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoicGllaXNnb29kNHUiLCJhIjoiY2o2emd1bWg4MDA4MDMzbXluNjBtem5lMiJ9.jIGkrUiDkQXfUl4EVruO1g', {
+        maxZoom: 18,
+        attribution: "&copy; <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> &copy; <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a>",
+        pane: 'labels'
+    }).addTo(map);
 
     // Creates a red marker with the coffee icon
     /*
@@ -250,6 +236,7 @@ window.onload = function () {
     //Load data for the graph and Create the graph.
     graphLoader()
     buildGraph()
+   
 
     //Geodesic line test. Needs work.
     //###############################
