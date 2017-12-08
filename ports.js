@@ -34,7 +34,7 @@ var ports = {
         {
             "geometry": {
                 "coordinates": [
-                    -84.0,
+                    -84.387,
                     33.750926
                 ],
                 "type": "Point"
@@ -59,7 +59,7 @@ var ports = {
         {
             "geometry": {
                 "coordinates": [
-                    -71.0,
+                    -71.055,
                     42.310964
                 ],
                 "type": "Point"
@@ -84,7 +84,7 @@ var ports = {
         {
             "geometry": {
                 "coordinates": [
-                    -88.0,
+                    -87.6241,
                     41.848741
                 ],
                 "type": "Point"
@@ -109,7 +109,7 @@ var ports = {
         {
             "geometry": {
                 "coordinates": [
-                    -97.0,
+                    -96.794,
                     32.782484
                 ],
                 "type": "Point"
@@ -134,7 +134,7 @@ var ports = {
         {
             "geometry": {
                 "coordinates": [
-                    -80.0,
+                    -80.133,
                     26.132466
                 ],
                 "type": "Point"
@@ -159,7 +159,7 @@ var ports = {
         {
             "geometry": {
                 "coordinates": [
-                    -158.0,
+                    -157.861,
                     21.308501
                 ],
                 "type": "Point"
@@ -184,7 +184,7 @@ var ports = {
         {
             "geometry": {
                 "coordinates": [
-                    -95.0,
+                    -95.3625,
                     29.750447
                 ],
                 "type": "Point"
@@ -209,7 +209,7 @@ var ports = {
         {
             "geometry": {
                 "coordinates": [
-                    -118.0,
+                    -118.247,
                     34.055631
                 ],
                 "type": "Point"
@@ -234,7 +234,7 @@ var ports = {
         {
             "geometry": {
                 "coordinates": [
-                    -80.0,
+                    -80.199,
                     25.777394
                 ],
                 "type": "Point"
@@ -259,7 +259,7 @@ var ports = {
         {
             "geometry": {
                 "coordinates": [
-                    -74.0,
+                    -74.066,
                     40.708633
                 ],
                 "type": "Point"
@@ -284,7 +284,7 @@ var ports = {
         {
             "geometry": {
                 "coordinates": [
-                    -74.0,
+                    -74.177,
                     40.724435
                 ],
                 "type": "Point"
@@ -309,7 +309,7 @@ var ports = {
         {
             "geometry": {
                 "coordinates": [
-                    -81.0,
+                    -81.385,
                     28.532775
                 ],
                 "type": "Point"
@@ -334,7 +334,7 @@ var ports = {
         {
             "geometry": {
                 "coordinates": [
-                    -122.0,
+                    -122.421,
                     37.757618
                 ],
                 "type": "Point"
@@ -345,7 +345,7 @@ var ports = {
                 "PORTS_10": 188552,
                 "PORTS_11": 130415,
                 "PORTS_12": 156933,
-                "PORTS_2": 145281,
+                "PORTS_2": 145281,  
                 "PORTS_3": 155992,
                 "PORTS_4": 164183,
                 "PORTS_5": 196984,
