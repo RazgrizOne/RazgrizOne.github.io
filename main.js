@@ -170,9 +170,6 @@ window.onload = function () {
         ).addTo(map);
 
 
-
-    //https://api.mapbox.com/styles/v1/amasw87/cjaal9d4k2kpi2snt65k9b7c8/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYW1hc3c4NyIsImEiOiJjajZ6aG50bnUwMGpqMnBvOGJjNTk0cHFvIn0.IXHyLgImAw0H_dlCs7ZEgA
-    //https://api.mapbox.com/styles/v1/amasw87/cjaffnvjx64um2rkan8pwg1to/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYW1hc3c4NyIsImEiOiJjajZ6aG50bnUwMGpqMnBvOGJjNTk0cHFvIn0.IXHyLgImAw0H_dlCs7ZEgA
     L.tileLayer('https://api.mapbox.com/styles/v1/pieisgood4u/cjaoe7l96fex02spepf1p7pmj/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoicGllaXNnb29kNHUiLCJhIjoiY2o2emd1bWg4MDA4MDMzbXluNjBtem5lMiJ9.jIGkrUiDkQXfUl4EVruO1g', {
         maxZoom: 18,
         attribution: "&copy; <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> &copy; <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a>"

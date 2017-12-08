@@ -129,6 +129,12 @@ body {
     background: -webkit-linear-gradient(top, #FDF3DD  0%,#FFF1D2  70%,#888888 100%);
 }
 
+.simplepattern3 {
+    z-index:99; 
+    position:absolute;
+    background: -webkit-linear-gradient(top, #FF7373  0%,#888888 100%);
+}
+
 .handle {
     z-index:99; 
     position:absolute;

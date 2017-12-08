@@ -17,19 +17,6 @@
   <script src="ports.js"></script>
   <script src="plugins/chart.js"></script>
   <script src="plugins/color.js"></script>
-
-
-  
-  <script src="leaflet.awesome-markers.min.js"></script>
-
-  <!--I may attempt to use the Mapbox api for added functionality-->
-  <!--
-  <script src='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js'></script>
-  <link href='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css' rel='stylesheet' />
-
-  -->
-  <!--If we don't end up using it, we can just delete these later-->
-
   <script src="graph.js"></script>
   <script src="main.js"></script>
 </head>
@@ -47,12 +34,12 @@
     <div class="hud" style="width:100%; height:100%; background-color: #ffffff">
         <div id="mapDiv"></div>
     </div>
-    <div class="simplepattern" style="right:9%; top:9%; width:21%; height:81%; opacity: .9; border: 5px solid coral; background-color: #ff7800"></div>
-    <div class="hud" style="right:10.5%; top:8%; width:19%; height:39%; opacity: 1; text-align: left;"><p style = "text-indent: 0px;">This map shows international tourist traffic to the U.S. in 2016. Two sets are data are being displayed.</p>
+    <div class="simplepattern" style="right:9%; top:9%; width:21%; height:81%; opacity: .9; border: 5px solid #5376B3; background-color: #ff7800"></div>
+    <div class="hud" style="right:10.5%; top:9%; width:19%; height:39%; opacity: 1; text-align: left;"><p style = "text-indent: 0px;">This map shows international tourist traffic to the U.S. in 2016. Two sets of data are being displayed.</p>
         <p>Top 20 inbound Countries:
             The top 20 countries ranked by number of tourists per month.</p>
         U.S. Ports:
-        Top cities for incoming tourists and the magnitude of traffic. Circle size is based on traffic.</p>
+        Top 15 cities for incoming tourists and the magnitude of traffic. Circle size is based on traffic.</p>
         <p>Click on any feature to see a popup with details.
         </p>
      </div>
@@ -74,23 +61,29 @@
     </div>
     <div class="hud" style="top:8px; right:238px; background-color: #C9C9C9; border: 3px solid #5A3600 "><a href="Contributors.txt">Contributors/sources</a></div>
 
-   
-  
+    <svg class= "hud" style= "height:140px; width:150px; background-color:#9EA3BE; top:70%; left:5%; opacity: .9; border: 5px solid #5376B3;">
+      <circle cx="30" cy="20" r="5" stroke="black" stroke-width="1" fill=#FF881F />
+      <circle cx="30" cy="42" r="10" stroke="black" stroke-width="1" fill=#FF881F />
+      <circle cx="30" cy="80" r="20" stroke="black" stroke-width="1" fill=#FF881F />
+    </svg>
 
+    <div class="hud" style= "height:120px; width:150px; top:70%; left:5%;">
+        <div class="hud" style= "left:14%; top: 80%">
+        <p>Incoming tourists</p>
+        </div>
+      </div>
 
-  </div>
-  
- <!--
-  <div class="dropdown">
-    <img class="dropbtn" src="dropdown.png" onclick="myFunction()" alt="Smiley face" height="21" width="42">
-    <div id="myDropdown" class="dropdown-content">
-
-      <a href="#home" , onclick="changeBaseData('T_2016_')">Top 20 Inbound</a>
-      <a href="#about" , onclick="changeBaseData('PORTS_2016_')">Top Ports U.S</a>
-      <a href="#contact" , onclick="changeBaseData('MEX_CAN_2016_')">Regions</a>
+    <div class="hud" style= "height:120px; width:150px; top:70%; left:5%;">
+      <div class="hud" style= "left:50%; top:-2%">
+      <p>100,000</p>
+      <P>200,000</P>
+      <p>500,000</p>
+      </div>
     </div>
+  
+
+
   </div>
--->
 
   <button id="minus" , class="hud" style="left:410px; top: 10px; background-color: #57A9E0; border-color: coral; font-weight: bold; height:20px; width: 30px;" onclick="changeDate(-1)">-</button>
   <button id="plus" , class="hud" style="left:529px; top: 10px; background-color: #6B9EC0; border-color: coral; font-weight: bold; height:20px; width: 30px;" onclick="changeDate(1)">+</button>
@@ -99,26 +92,7 @@
 
 
 <script>
-  /*
-  function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
-  }
 
-  // Close the dropdown if the user clicks outside of it
-  window.onclick = function (event) {
-    if (!event.target.matches('.dropbtn')) {
-
-      var dropdowns = document.getElementsByClassName("dropdown-content");
-      var i;
-      for (i = 0; i < dropdowns.length; i++) {
-        var openDropdown = dropdowns[i];
-        if (openDropdown.classList.contains('show')) {
-          openDropdown.classList.remove('show');
-        }
-      }
-    }
-  }
-*/
 </script>
 
 </html>

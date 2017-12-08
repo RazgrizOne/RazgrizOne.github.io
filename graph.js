@@ -1,5 +1,4 @@
 Chart.defaults.global.responsive = true
-//Chart.defaults.global.defaultColor = Color({ h: 0, s: 80, l: 50 }).toCSS();
 Chart.defaults.global.defaultFontColor = 'black';
 Chart.defaults.global.legend.display = false;
 Chart.defaults.global.barPercentage = 1;
@@ -9,22 +8,16 @@ var chart
 
 
 function sortData(Countries, data, color) {
-
-    //1) combine the arrays:
+   
     var list = [];
     for (var j = 0; j < Countries.length; j++)
         list.push({ 'name': Countries[j], 'value': data[j], 'color': color[j] });
 
-    //2) sort:
     list.sort(function (a, b) {
         return ((a.value < b.value) ? -1 : ((a.value == b.value) ? 0 : 1));
-        //Sort could be modified to, for example, sort on the age 
-        // if the name is the same.
     });
 
-    //3) separate them back out:
     return list
-
 }
 
 
@@ -35,7 +28,6 @@ function sortData(Countries, data, color) {
 //Input:  None
 //Output: databank (package of data and labels which is used when drawing the graph)
 //Method: loads target data into a package.
-//Dependancy: Who knows :)
 function graphLoader() {
     var datasets = []
     var data_data = []
@@ -79,7 +71,6 @@ function graphLoader() {
 //Input:  None
 //Output: databank
 //Method: build or rebuild a graph.
-//Dependancy: Who knows :)
 function buildGraph() {
     chart
     graphLoader()

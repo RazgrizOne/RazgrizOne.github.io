@@ -10,6 +10,8 @@ Kelsey Glaze (glaze.57@osu.edu)
 
 Data Source: https://travel.trade.gov/research/monthly/arrivals/index.asp
 
+Video: https://youtu.be/6gAXEo7nvis
+
 Libraries:  
 Leaflet - http://leafletjs.com/ 
 Chart.js - http://www.chartjs.org/ 
